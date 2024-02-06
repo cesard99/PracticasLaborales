@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginC {
@@ -14,6 +16,11 @@ public class LoginC {
 
     @FXML
     private Button ButtonCancel;
+      @FXML
+    private PasswordField textfieldpass;
+
+    @FXML
+    private TextField textfielduser;
 
     @FXML
     void CloseWindows(ActionEvent event) {
@@ -28,6 +35,12 @@ public class LoginC {
 
     public void setStage(Stage primaryStage) {
         this.stage=primaryStage;
+    }
+
+
+
+    public boolean verify(){
+        bandera=false;
     }
 
 }
