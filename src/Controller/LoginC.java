@@ -40,7 +40,9 @@ public class LoginC {
 
 
     public boolean verify(){
-        bandera=false;
+       boolean bandera=false;
+       
+        return bandera;
     }
 
 }
