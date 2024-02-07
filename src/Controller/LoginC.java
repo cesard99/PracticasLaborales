@@ -1,9 +1,12 @@
 package Controller;
 
+import java.security.Principal;
+
 import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -32,6 +35,10 @@ public class LoginC {
 
     @FXML
     void WindowsPrincipal(ActionEvent event) {
+        if(verify()){
+            FXMLLoader loader= new FXMLLoader();
+            loader.setLocation(LoginC.class.getResource(/view/Principal.fxml));
+        }
 
     }
 
