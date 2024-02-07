@@ -1,5 +1,7 @@
 package Controller;
 
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -41,7 +43,16 @@ public class LoginC {
 
     public boolean verify(){
        boolean bandera=false;
-       
+        if(!textfieldpass.getText().isEmpty() && !textfielduser.getText().isEmpty()){
+            if(textfieldpass.getText().equals("cesar123") && textfielduser.getText().equals("Cesar")){
+                bandera=true;
+            }else{
+                JOptionPane.showMessageDialog(null,"Los datos introduccidos no son correctos");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Los campos no estan llenos");
+        }
+
         return bandera;
     }
 
