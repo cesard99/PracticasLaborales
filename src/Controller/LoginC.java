@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.*;
 import java.security.Principal;
 
 import javax.swing.JOptionPane;
@@ -7,11 +8,14 @@ import javax.swing.JOptionPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+
 
 public class LoginC {
     private Stage stage;
@@ -34,11 +38,26 @@ public class LoginC {
     }
 
     @FXML
-    void WindowsPrincipal(ActionEvent event) {
-        if(verify()){
-            FXMLLoader loader= new FXMLLoader();
-            loader.setLocation(LoginC.class.getResource(/view/Principal.fxml));
+    void WindowsPrincipal(ActionEvent event) throws Exception {
+        try {
+            if(verify()){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Principal.fxml"));
+                Parent root = loader.load();
+                PrincipalC controller= loader.getController();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                Image icon = new Image("/Img/ImagenCodigo2.png");
+                stage.setTitle("Ventana Principal");
+                stage.getIcons().add(icon);
+                controller.init(stage, this);
+                stage.show();
+                this.stage.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        
 
     }
 
@@ -61,6 +80,10 @@ public class LoginC {
         }
 
         return bandera;
+    }
+
+    public void show() {
+        stage.show();
     }
 
 }
