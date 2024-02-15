@@ -51,6 +51,7 @@ public class PrincipalC {
     @FXML
     void ClosedThisWindows(ActionEvent event) {
         controllerLogin.show();
+        controllerLogin.RestartTextFields();
         stage.close();
 
     }
