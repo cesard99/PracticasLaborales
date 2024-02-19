@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class PrincipalC {
     private Stage stage;
@@ -32,7 +33,7 @@ public class PrincipalC {
             CreateUserC controller = loader.getController();
             Scene scene = new Scene(root);
             Stage stage2 = new Stage();
-            scene.getStylesheets().add(getClass().getResource("/Style/CreateUser.css").toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Style/CreateUser.css")).toExternalForm());
             stage2.setScene(scene);
             stage2.setTitle("Ventana Create User");
             Image icon = new Image("/Img/iconCreateUser.png");

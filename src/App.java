@@ -6,12 +6,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
+import java.util.Objects;
+
 
 public class App extends Application{
 
-    @Override
 
-    public void start(Stage primaryStage)throws Exception{
+
+    public void start(Stage primaryStage) {
         try{
 
             FXMLLoader loader = new FXMLLoader();
@@ -20,7 +22,7 @@ public class App extends Application{
             Scene scene = new Scene(root);
             LoginC controller =loader.getController();
             controller.setStage(primaryStage);
-            scene.getStylesheets().add(getClass().getResource("/Style/Login.css").toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Style/Login.css")).toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Ventana Login");
             Image icon = new Image("/Img/ImagenVentanaLogin.jpg");
@@ -29,7 +31,7 @@ public class App extends Application{
 
         
         }catch(Exception e){
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
 
     }
