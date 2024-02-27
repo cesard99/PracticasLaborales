@@ -17,11 +17,27 @@ public class PrincipalC {
     private LoginC controllerLogin;
 
     @FXML
+    private Button ButtonAlice;
+
+    @FXML
+    private Button ButtonBob;
+
+    @FXML
     private Button ButtonCreateUser;
 
     @FXML
     private Button ButtonDisconect;
 
+
+    @FXML
+    void CallAliceGenerate(ActionEvent event) {
+
+    }
+
+    @FXML
+    void CallBobVerify(ActionEvent event) {
+
+    }
 
 
     @FXML
