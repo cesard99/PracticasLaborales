@@ -1,4 +1,6 @@
+import Controller.Controller;
 import Controller.LoginC;
+import Controller.Progress;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
+import java.io.IOException;
 import java.util.Objects;
 
 
@@ -13,31 +16,16 @@ public class App extends Application{
 
 
 
-    public void start(Stage primaryStage) {
-        try{
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("/view/Login.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            LoginC controller =loader.getController();
-            controller.setStage(primaryStage);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Style/Login.css")).toExternalForm());
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Ventana Login");
-            Image icon = new Image("/Img/ImagenVentanaLogin.jpg");
-            primaryStage.getIcons().add(icon);
-            primaryStage.show();
-
-        
-        }catch(Exception e){
-            e.fillInStackTrace();
-        }
+    public void start(Stage primaryStage) throws IOException {
+        Controller controller = new Controller();
+        controller.showWindow1();
 
     }
 
     public static void main(String [] args){
-       launch(args);
+        Progress frame = new Progress(null,null);
+        frame.setVisible(true);
+         launch(args);
     }
 
 }

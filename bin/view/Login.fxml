@@ -32,5 +32,6 @@
             <Insets />
          </opaqueInsets>
       </Label>
+      <Label fx:id="lblError" layoutX="330.0" layoutY="283.0" prefHeight="18.0" prefWidth="274.0" text="Error" textFill="#f70505" visible="false" />
    </children>
 </AnchorPane>

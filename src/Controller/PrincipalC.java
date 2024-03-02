@@ -30,12 +30,21 @@ public class PrincipalC {
 
 
     @FXML
-    void CallAliceGenerate(ActionEvent event) {
-
+    void CallFirmGenerate(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/VentanaFirma.fxml"));
+        Parent root = loader.load();
+        VentanaFirma controller = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage1 = new Stage();
+        stage1.setScene(scene);
+        stage1.setTitle("Ventana firma");
+        stage1.show();
     }
 
     @FXML
-    void CallBobVerify(ActionEvent event) {
+    void CallVerify(ActionEvent event)  {
+
+
 
     }
 

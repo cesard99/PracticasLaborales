@@ -12,3 +12,10 @@
     -fx-border-radius: 12px;
 
 }
+
+#textfieldLogin{
+-fx-background-color:transparent;
+-fx-border-color:rgb(40,40,224);
+-fx-border-width:0px 0px 2px;
+
+}
