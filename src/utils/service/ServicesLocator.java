@@ -6,6 +6,13 @@ import utils.conectiondtb.*;
 public class ServicesLocator {
 	
 	public static Registrer_Services registrer_Services = null;
+	public static FirmaDigital_Service firmaDigital_Service= null;
+
+	public static FirmaDigital_Service getFirmaDigital_Service(){
+		if(firmaDigital_Service==null)
+			firmaDigital_Service = new FirmaDigital_Service();
+		return firmaDigital_Service;
+	}
 	
 	
 	public static Registrer_Services getRegistrer_Services(){
