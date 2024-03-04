@@ -2,6 +2,9 @@ package utils.Controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import utils.service.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +52,7 @@ public class LoginC {
 
     @FXML
     void WindowsPrincipal(ActionEvent event) throws Exception {
-             
+          if (verify()){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/visual/view/Principal.fxml"));
                 Parent root = loader.load();
                 PrincipalC  controller= loader.getController();
@@ -63,7 +66,7 @@ public class LoginC {
                 controller.init(stage, this);
                 stage.show();
                 this.stage.close();
-            
+        }
         
 
 
@@ -72,7 +75,7 @@ public class LoginC {
     public void setStage(Stage primaryStage) {
         this.stage=primaryStage;
     }
-
+     
 
 
     public boolean verify() throws ClassNotFoundException, SQLException{
@@ -86,8 +89,10 @@ public class LoginC {
                         user=u;
                         bandera=true;
                     }else{
-                        throw new IllegalArgumentException("La contraseña es incorrectta , rectifique");
+                       throw new IllegalArgumentException("La contraseña es incorrecta, verifique");
                     }
+                }else{
+                    throw new IllegalArgumentException("El nombre de usuario no es correcto ,rectifique");
                 }
             }
        
@@ -99,19 +104,7 @@ public class LoginC {
         return bandera;
     }
 
-    public void nouser(){
-        
-        try {
-            listaUsuarios = ServicesLocator.getRegistrer_Services().selectAllUsers();
-            if(listaUsuarios.size()==0){
-                registrer_Services.insertUser("Cesar", Encription.encode(Definicion.SECRET_KEY_PASSWORD, "cesar123"));
-                
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-    }
+  
 
     public void show() {
         stage.show();

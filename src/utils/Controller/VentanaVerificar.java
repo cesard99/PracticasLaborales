@@ -7,52 +7,37 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class VentanaFirma {
+public class VentanaVerificar {
     PrincipalC controller = new PrincipalC();
-    Stage stage = new Stage();
+    Stage stage= new Stage();
 
     @FXML
     private Button ButtonCancelar;
 
     @FXML
-    private Button ButtonGenerate;
+    private Button ButtonVerificar;
 
     @FXML
-    private Button ButtonSave;
-
-    @FXML
-    private Label label2;
-
-    @FXML
-    private Label lbl1;
-    @FXML
-    private Label lblShowFirm;
+    private Label lblPosibilidad;
 
     @FXML
     private TextField textfieldText;
 
     @FXML
-    private TextField textfield2;
-
-    @FXML
     void ClosedWindows(ActionEvent event) {
         this.stage.close();
         controller.show();
-    }
-
-    @FXML
-    void callGenerateFirm(ActionEvent event) {
 
     }
 
     @FXML
-    void callSaveInBD(ActionEvent event) {
+    void verificarFirma(ActionEvent event) {
 
     }
 
-    public void inicio(Stage stage, PrincipalC principalC) {
-       this.stage= stage;
-       controller=principalC;
+    public void init(Stage stage, PrincipalC principalC) {
+        this.stage=stage;
+        controller=principalC;
     }
 
 }

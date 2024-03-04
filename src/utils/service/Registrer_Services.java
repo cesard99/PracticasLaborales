@@ -15,7 +15,7 @@ import utils.dto.Registrer_DTO;
 public class Registrer_Services {
 	public void insertUser(String usser, String userpass) 
 			throws SQLException, ClassNotFoundException{
-		String query = "SELECT users_insert(?,?)";
+		String query = "SELECT usser_insert(?,?)";
 		java.sql.Connection connection = ServicesLocator.getConnection();
 		userpass=Encription.encode(Definicion.SECRET_KEY_PASSWORD, userpass);
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -80,7 +80,7 @@ public class Registrer_Services {
 	
 	public ArrayList<Registrer_DTO> selectAllUsers() throws SQLException, ClassNotFoundException{
 		ArrayList<Registrer_DTO> users = new ArrayList<Registrer_DTO>();
-		String function = "{?= call select_all_users()}";
+		String function = "{?= call select_all_usser()}";
 		java.sql.Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		CallableStatement preparedFunction = connection.prepareCall(function);
