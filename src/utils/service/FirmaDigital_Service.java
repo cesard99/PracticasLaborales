@@ -11,14 +11,16 @@ import utils.dto.Registrer_DTO;
 
 public class FirmaDigital_Service {
     
-public void insertText(String text, String firma,String usuario) 
+public void insertText(String text, String firma,String usuario,String privatekey,String publickey) 
 			throws SQLException, ClassNotFoundException{
-		String query = "SELECT text_insert(?,?,?)";
+		String query = "SELECT text_insert(?,?,?,?,?)";
 		java.sql.Connection connection = ServicesLocator.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, text);
 		preparedStatement.setString(2, firma);
         preparedStatement.setString(3, usuario);
+		preparedStatement.setString(4, privatekey);
+		preparedStatement.setString(5, publickey);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();
@@ -34,7 +36,7 @@ public void insertText(String text, String firma,String usuario)
 		preparedFunction.execute();
 		ResultSet rs = (ResultSet) preparedFunction.getObject(1);
 		while (rs.next()){
-			text.add(new FirmaDigital_DTO(rs.getString(1), rs.getString(2), rs.getString(3)));
+			text.add(new FirmaDigital_DTO(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getString(5)));
 		}
 		rs.close();
 		preparedFunction.close();

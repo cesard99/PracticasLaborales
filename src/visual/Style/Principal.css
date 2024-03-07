@@ -7,3 +7,10 @@
     -fx-font-size: 18px;
     -fx-border-radius: 12px;
 }
+
+#lbluser{
+   -fx-font-family: Arial, sans-serif;
+   -fx-font-size: 14px;
+   -fx-font-style: black;
+ 
+}

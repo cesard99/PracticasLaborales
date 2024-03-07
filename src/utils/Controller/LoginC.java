@@ -1,5 +1,6 @@
 package utils.Controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -40,6 +41,7 @@ public class LoginC {
     private Registrer_Services registrer_Services = ServicesLocator.getRegistrer_Services();
 	private ArrayList<Registrer_DTO> listaUsuarios;
 	private Registrer_DTO user;
+    String nombreLogin;
 
 
 
@@ -63,7 +65,7 @@ public class LoginC {
                 Image icon = new Image("/Img/ImagenCodigo2.png");
                 stage.setTitle("Ventana Principal");
                 stage.getIcons().add(icon);
-                controller.init(stage, this);
+                controller.init(stage,nombreLogin, this);
                 stage.show();
                 this.stage.close();
         }
@@ -78,7 +80,7 @@ public class LoginC {
      
 
 
-    public boolean verify() throws ClassNotFoundException, SQLException{
+    public boolean verify() throws ClassNotFoundException, SQLException, IOException{
        boolean bandera=false;
           listaUsuarios = ServicesLocator.getRegistrer_Services().selectAllUsers();          
              for(int i=0 ; i<listaUsuarios.size() && !bandera ; i++ ){
@@ -86,13 +88,16 @@ public class LoginC {
                 if(u.getName().equals(textfielduser.getText())){
                     String pass = Encription.decode(Definicion.SECRET_KEY_PASSWORD, u.getPss());
                     if(pass.equals(textfieldpass.getText())){
-                        user=u;
+                        nombreLogin = textfielduser.getText();
+                         user=u;
                         bandera=true;
                     }else{
-                       throw new IllegalArgumentException("La contraseña es incorrecta, verifique");
+                       lblError.setText("La contraseña es incorrecta");
+                       lblError.setVisible(true);
                     }
                 }else{
-                    throw new IllegalArgumentException("El nombre de usuario no es correcto ,rectifique");
+                    lblError.setText("El nombre es incorrecto");
+                    lblError.setVisible(true);
                 }
             }
        
@@ -118,4 +123,10 @@ public class LoginC {
         lblError.setVisible(false);
 
     }
+
+    public String NombreUserLogin(){
+        return nombreLogin;
+    }
+
+    
 }

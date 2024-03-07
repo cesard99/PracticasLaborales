@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -21,6 +22,9 @@ public class PrincipalC {
     private Button ButtonAlice;
 
     @FXML
+    private Label lbluser;
+
+    @FXML
     private Button ButtonCreateAdmin;
 
     @FXML
@@ -31,6 +35,7 @@ public class PrincipalC {
 
     @FXML
     private AnchorPane VentanaP;
+    String nombreuser;
 
 
 
@@ -65,9 +70,10 @@ public class PrincipalC {
         stage.setTitle("Ventana de Firma");
         Image icon = new Image("/Img/firma.jpg");
         stage.getIcons().add(icon);
-        ventana.inicio(stage,this);
+        ventana.inicio(stage,nombreuser,this);
         stage.show();
         this.stage.close();
+        
 
     }
 
@@ -79,8 +85,10 @@ public class PrincipalC {
 
     }
 
-    public void init(Stage stage,LoginC loginC) {
+    public void init(Stage stage,String nombre,LoginC loginC) {
         this.stage = stage;
+        lbluser.setText( "Usuario:"+nombre);
+        this.nombreuser=nombre;
         controller= loginC;
 
     }
@@ -88,4 +96,7 @@ public class PrincipalC {
     public void show() {
         this.stage.show();
     }
+
+
+    
 }
