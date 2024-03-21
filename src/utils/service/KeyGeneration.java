@@ -81,6 +81,45 @@ public static String publicKeyToString(PublicKey publicKey) throws Exception {
     return Base64.getEncoder().encodeToString(spec.getEncoded());
 }
 
+public static PrivateKey stringToPrivateKey(String privateKeyString) throws Exception {
+    // Elimina los encabezados y pies de página del formato PEM
+    String privateKeyPEM = privateKeyString
+            .replace("-----BEGIN PRIVATE KEY-----", "")
+            .replace("-----END PRIVATE KEY-----", "")
+            .replaceAll("\\s", ""); // Elimina los espacios en blanco
+
+    // Decodifica la clave privada de Base64 a bytes
+    byte[] decoded = Base64.getDecoder().decode(privateKeyPEM);
+
+    // Crea un objeto PKCS8EncodedKeySpec con los bytes decodificados
+    PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(decoded);
+
+    // Crea una instancia de KeyFactory para generar la clave privada
+    KeyFactory kf = KeyFactory.getInstance("RSA");
+
+    // Genera la clave privada a partir de la especificación
+    return kf.generatePrivate(spec);
+}
+
+public static PublicKey stringToPublicKey(String publicKeyString) throws Exception {
+    // Elimina los encabezados y pies de página del formato PEM
+    String publicKeyPEM = publicKeyString
+            .replace("-----BEGIN PUBLIC KEY-----", "")
+            .replace("-----END PUBLIC KEY-----", "")
+            .replaceAll("\\s", ""); // Elimina los espacios en blanco
+
+    // Decodifica la clave pública de Base64 a bytes
+    byte[] decoded = Base64.getDecoder().decode(publicKeyPEM);
+
+    // Crea un objeto X509EncodedKeySpec con los bytes decodificados
+    X509EncodedKeySpec spec = new X509EncodedKeySpec(decoded);
+
+    // Crea una instancia de KeyFactory para generar la clave pública
+    KeyFactory kf = KeyFactory.getInstance("RSA");
+
+    // Genera la clave pública a partir de la especificación
+    return kf.generatePublic(spec);
+}
 
     
 }

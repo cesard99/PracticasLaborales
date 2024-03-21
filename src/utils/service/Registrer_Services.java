@@ -71,7 +71,7 @@ public class Registrer_Services {
 		String query = "SELECT * FROM users_ WHERE users_.users_code = '"+userCode+"'"; 
 		ResultSet rs = statement.executeQuery(query);
 		rs.first();
-		Registrer_DTO user = new Registrer_DTO(rs.getString(1), rs.getString(2));
+		Registrer_DTO user = new Registrer_DTO(rs.getString(1), rs.getString(2),rs.getInt(3));
 		rs.close();
 		statement.close();
 		connection.close();
@@ -88,7 +88,7 @@ public class Registrer_Services {
 		preparedFunction.execute();
 		ResultSet rs = (ResultSet) preparedFunction.getObject(1);
 		while (rs.next()){
-			users.add(new Registrer_DTO(rs.getString(1), rs.getString(2)));
+			users.add(new Registrer_DTO(rs.getString(1), rs.getString(2),rs.getInt(3)));
 		}
 		rs.close();
 		preparedFunction.close();

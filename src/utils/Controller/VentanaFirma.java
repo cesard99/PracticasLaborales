@@ -81,6 +81,7 @@ public class VentanaFirma {
     void callSaveInBD(ActionEvent event) {
         try {
             firmaDigital_Service.insertText(textfieldText.getText(),textoFirmado , nombreuser,privateKeyString ,publickeyString);
+            this.stage.close();
             
         } catch (Exception e) {
            e.printStackTrace();

@@ -1,20 +1,29 @@
 package utils.dto;
 
 public class FirmaDigital_DTO {
+    protected int id;
     protected String text;
     protected String firma;
-    protected String usuario;
+    protected int usuario_id;
     protected String privatekey;
     protected String publickey;
 
-    
 
-   
-
-    public FirmaDigital_DTO(String text , String firma, String usuario , String privateKey, String publickey){
+    public FirmaDigital_DTO(int id ,String text , String firma, int usuario , String privateKey, String publickey){
+        this.id = id;
         this.text=text;
         this.firma=firma;
-        this.usuario=usuario;
+        this.usuario_id=usuario;
+        this.privatekey=privateKey;
+        this.publickey=publickey;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getText() {
@@ -32,12 +41,12 @@ public class FirmaDigital_DTO {
     public void setFirma(String firma) {
         this.firma = firma;
     }
-    public String getUsuario() {
-        return usuario;
+    public int getUsuario() {
+        return usuario_id;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(int usuario) {
+        this.usuario_id = usuario;
     }
 
     public String getPrivatekey() {

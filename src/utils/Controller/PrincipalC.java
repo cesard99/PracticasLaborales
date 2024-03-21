@@ -1,8 +1,6 @@
 package utils.Controller;
 
 import java.io.IOException;
- import utils.Controller.*;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,7 +85,7 @@ public class PrincipalC {
 
     public void init(Stage stage,String nombre,LoginC loginC) {
         this.stage = stage;
-        lbluser.setText( "Usuario:"+nombre);
+        lbluser.setText( "Usuario:"+ nombre);
         this.nombreuser=nombre;
         controller= loginC;
 

@@ -41,7 +41,7 @@ public class LoginC {
     private Registrer_Services registrer_Services = ServicesLocator.getRegistrer_Services();
 	private ArrayList<Registrer_DTO> listaUsuarios;
 	private Registrer_DTO user;
-    String nombreLogin;
+    
 
 
 
@@ -55,6 +55,8 @@ public class LoginC {
     @FXML
     void WindowsPrincipal(ActionEvent event) throws Exception {
           if (verify()){
+               System.out.println(user.getName());
+               
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/visual/view/Principal.fxml"));
                 Parent root = loader.load();
                 PrincipalC  controller= loader.getController();
@@ -65,7 +67,7 @@ public class LoginC {
                 Image icon = new Image("/Img/ImagenCodigo2.png");
                 stage.setTitle("Ventana Principal");
                 stage.getIcons().add(icon);
-                controller.init(stage,nombreLogin, this);
+                controller.init(stage,user.getName(), this);
                 stage.show();
                 this.stage.close();
         }
@@ -88,8 +90,7 @@ public class LoginC {
                 if(u.getName().equals(textfielduser.getText())){
                     String pass = Encription.decode(Definicion.SECRET_KEY_PASSWORD, u.getPss());
                     if(pass.equals(textfieldpass.getText())){
-                        nombreLogin = textfielduser.getText();
-                         user=u;
+                        user=u;
                         bandera=true;
                     }else{
                        lblError.setText("La contraseña es incorrecta");
