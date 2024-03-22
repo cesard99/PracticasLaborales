@@ -27,7 +27,7 @@ public class VentanaFirma {
     private FirmaDigital_Service firmaDigital_Service=ServicesLocator.getFirmaDigital_Service();
     private FirmaDigital_DTO firmaDigital;
     LoginC controlLogin = new LoginC();
-    String nombreuser;
+    int nombreuser;
 
     @FXML
     private Button ButtonCancelar;
@@ -94,7 +94,7 @@ public class VentanaFirma {
     public void inicio(Stage stage, String nombre ,PrincipalC principalC) {
        this.stage= stage;
        controller=principalC;
-       this.nombreuser=nombre;
+       
     }
     
     public void ShowFirm(String text){

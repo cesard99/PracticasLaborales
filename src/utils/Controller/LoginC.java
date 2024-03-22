@@ -125,9 +125,7 @@ public class LoginC {
 
     }
 
-    public String NombreUserLogin(){
-        return nombreLogin;
-    }
+    
 
     
 }
